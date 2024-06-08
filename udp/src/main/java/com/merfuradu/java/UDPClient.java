@@ -24,6 +24,10 @@ public class UDPClient {
         while (true) {
             try {
                 String messageToSend = scanner.nextLine();
+                if (messageToSend.equalsIgnoreCase("exit")) {
+                    System.out.println("You ve exited the server. Connection closed !");
+                    break;
+                }
                 buffer = messageToSend.getBytes();
                 DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length, inetAddress, 1234);
                 datagramSocket.send(datagramPacket);
